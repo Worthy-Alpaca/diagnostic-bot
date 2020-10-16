@@ -58,6 +58,33 @@ module.exports = {
 
             return resolve(response);
         })
-    }
+    },
+
+    delete_API_call: function (api_section = '', payload, guild, type = '') {
+        return new Promise(function (resolve, reject) {
+            const token = sign_token(guild.id);
+            //console.log(token)
+            const response = fetch(process.env.API_ADDRESS + `/diagnostics/${api_section}/?guildID=${guild.id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'content-type': 'application/json',
+                    'auth-token': token,
+                    'type': type,
+                },
+                body: payload
+            }).then(function (response) {
+                if (response.status === 200) {
+                    return response.json();
+                } else if (response.status === 409) {
+                    return response.json();
+                }
+            }).catch(error => {
+                return error_handler(error);
+            })
+
+            return resolve(response);
+        })
+    },
 
 }
