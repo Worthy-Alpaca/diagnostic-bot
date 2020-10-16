@@ -14,7 +14,7 @@ module.exports = {
             .setThumbnail(message.guild.iconURL())
             .setFooter(message.guild.name)
             .setTitle("**Statistics**")
-            .setDescription(`There have been \`${statistics[0].messages_count}\` with a total of \`${statistics[0].character_count}\` characters.
+            .setDescription(`There have been \`${statistics[0].messages_count}\` messages with a total of \`${statistics[0].character_count}\` characters.
             Thats about \`${statistics[0].character_count / statistics[0].messages_count}\` characters per message`);
 
         return message.reply(embed);
