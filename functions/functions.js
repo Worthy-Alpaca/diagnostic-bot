@@ -1,5 +1,6 @@
 const { owner } = require('../config.json');
 const jwt = require('jsonwebtoken');
+const Discord = require('discord.js');
 
 module.exports = {
     sign_token: function (id) {
