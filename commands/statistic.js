@@ -7,7 +7,7 @@ module.exports = {
     run: async (client, message, args) => {
 
         const statistics = await get_API_call(message, 'get', 'statistic', process.env.CHECKCHANNEL);
-        console.log(statistics[0].channel_name)
+        
         const embed = new Discord.MessageEmbed()
             .setTimestamp()
             .setColor("RANDOM")
