@@ -6,17 +6,19 @@ module.exports = {
     description: "Returns the statistics",
     run: async (client, message, args) => {
 
-        const statistics = await get_API_call(message, 'get', 'statistic', process.env.CHECKCHANNEL);
+        const response = await get_API_call(message, 'get', 'statistic', "683328323304292410");
         
-        if (statistics === false) {
+        if (response === false) {
             return message.reply("it appears the API is currently unavailable. Please try again at a later date")
         }
-        if (typeof messages_count == 'undefined') {
+
+        if (response.success === false) {
             const embed = new Discord.MessageEmbed()
                 .setColor("YELLOW")
                 .setDescription("❗ No statistics yet");
             return message.reply(embed);
         }
+        const statistics = response.value;
 
         const embed = new Discord.MessageEmbed()
             .setTimestamp()
