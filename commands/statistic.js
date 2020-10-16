@@ -6,7 +6,7 @@ module.exports = {
     description: "Returns the statistics",
     run: async (client, message, args) => {
 
-        const response = await get_API_call(message, 'get', 'statistic', "683328323304292410");
+        const response = await get_API_call(message, 'get', 'statistic', process.env.CHECKCHANNEL);
         
         if (response === false) {
             return message.reply("it appears the API is currently unavailable. Please try again at a later date")
