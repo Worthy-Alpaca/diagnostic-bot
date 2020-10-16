@@ -53,6 +53,10 @@ client.on('message', async message => {
         await API.post_API_call('post', payload, message.guild, 'diagnostics');
     }
 
+    if (message.mentions.has(client.user)) {
+        return message.reply(`I only have one command, \`${prefix}statistic\``);
+    }
+
     if (!message.content.startsWith(prefix)) {
         return;
     }    
