@@ -3,7 +3,7 @@ const fs = require('fs');
 const client = require('./client');
 require('dotenv').config();
 const checkprefix = "!";
-const prefix = "<";
+const prefix = ">";
 const API = require('./functions/API functions');
 
 client.commands = new Discord.Collection();
