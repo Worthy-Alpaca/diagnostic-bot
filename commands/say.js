@@ -1,10 +1,14 @@
 const Discord = require('discord.js');
+const { owner } = require('../config.json');
 
 module.exports = {
     name: "say",
     description: "Let the bot speak on your behalf",
     run: async (client, message, args) => {
         message.delete();
+        if (message.member.id !== owner) {
+            return message.reply("you can't do that!")
+        }
 
         if (typeof args[0] == 'undefined') {
             return message.channel.send("Maybe include something :wink:")
@@ -12,7 +16,7 @@ module.exports = {
 
         //const chnl = await filter_integer(message, args[0]);
 
-        const channel = message.guild.channels.cache.find(channel => channel.id === args[0]);
+        const channel = message.client.channels.cache.find(channel => channel.id === args[0]);
 
         if (!channel) {
             if (args[0].toLowerCase() === "embed") {
