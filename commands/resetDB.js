@@ -6,7 +6,7 @@ module.exports = {
     name: "reset-db",
     description: "Resets the statistics",
     run: async (client, message, args) => {
-        console.log(message.member.id)
+        
         if (message.member.id !== owner) {
             return message.reply("you can't do that!")
         }
