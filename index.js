@@ -5,6 +5,7 @@ require('dotenv').config();
 const checkprefix = "!";
 const prefix = ">";
 const API = require('./functions/API functions');
+const { dadjoke } = require('./functions/functions');
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
@@ -71,7 +72,7 @@ client.on('message', async message => {
     // If no command is found check the aliases
     if (!command) command = client.commands.get(client.aliases.get(cmd));
     // if there is no command we return with an error message
-    if (!command) return message.reply(`\`${prefix + cmd}\` doesn't exist!`);
+    if (!command) return dadjoke(message);
     // finally run the command
     command.run(client, message, args);
 })

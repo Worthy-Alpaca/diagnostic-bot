@@ -2,6 +2,7 @@ const { owner } = require('../config.json');
 const jwt = require('jsonwebtoken');
 const Discord = require('discord.js');
 const client = require('../client');
+const fetch = require('node-fetch');
 
 module.exports = {
     sign_token: function (id) {
@@ -21,4 +22,17 @@ module.exports = {
             return user.send(embed);
         });
     },
+
+    dadjoke: async function (message) {
+        const result = await fetch('https://icanhazdadjoke.com/', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(res => {
+            return res.json();
+        })
+
+        return message.reply(result.joke);
+    }
 }
